@@ -4,7 +4,7 @@ var csv = require("fast-csv");
 
 
 const url = "http://api.ipstack.com/addr?access_key=YOUR_KEY_HERE";
-var file = 'location.json';
+var file = 'files/location.json';
 
 
 ///
@@ -24,8 +24,8 @@ fetch(urlFix)
   .then(response => {
     response.json().then(json => {
       var obj = {ip: address,
-                 lat: json.longitude,
-                 long: json.latitude};
+                 lat: json.latitude,
+                 long: json.longitude};
 
       writejson(obj);
       //console.log(json.longitude);
@@ -41,7 +41,7 @@ function readCSV(){
 
 
 csv
- .fromPath("ip_list.csv")
+ .fromPath("files/ip_list.csv")
  .on("data", function(data){
      var str = data.toString();
 
